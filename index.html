@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="smartTable">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Smart Table</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+</head>
+<body ng-controller="stCtrl">
+  <input value="" ng-model="searchedQuery">
+  <table>
+    <tr>
+      <th ng-click="sort('first_Name')">First Name</th>
+      <th ng-click="sort('last_Name')">Surname</th>
+      <th ng-click="sort('age')">Age</th>
+      <th ng-click="sort('country')">Country</th>
+      <th ng-click="sort('date')">Date</th>
+    </tr>
+    <tr ng-repeat="person in people | filter:filterPeople | orderBy:sortedColumn:reverse">
+      <td>{{person.first_name}}</td>
+      <td>{{person.last_name}}</td>
+      <td>{{person.age}}</td>
+      <td>{{person.country}}</td>
+      <td>{{person.date}}</td>
+    </tr>
+  </table>
+  <script src="people-factory.js"></script>
+  <script src="smart-table-module.js"></script>
+  <script src="smart-table-controller.js"></script>
+</body>
+</html>
